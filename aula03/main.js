@@ -1,10 +1,10 @@
-import * as THREE from '../auxiliar/libs/three.js-r132/build/three.module.js'
+import * as THREE from './../auxiliar/libs/three.js-r132/build/three.module.js'
 
 document.addEventListener('DOMContentLoaded', () => {
     const start = async () => {
         const mindarThree = new window.MINDAR.IMAGE.MindARThree({
             container: document.body,
-            imageTargetSrc: '../../auxiliar/assets/targets/course-banner.mind'
+            imageTargetSrc: './../auxiliar/assets/targets/course-banner.mind'
         });
 
         const { renderer, scene, camera } = mindarThree;
