@@ -4,18 +4,18 @@ export const mockWithVideo = (path) => {
       const video = document.createElement("video");
 
       video.oncanplay = () => {
-	const startButton = document.createElement("button");
-	startButton.innerHTML = "start";
-	startButton.style.position = 'fixed';
-	startButton.style.zIndex = 10000;
-	document.body.appendChild(startButton);
+        const startButton = document.createElement("button");
+        startButton.innerHTML = "start";
+        startButton.style.position = 'fixed';
+        startButton.style.zIndex = 10000;
+        document.body.appendChild(startButton);
 
-	startButton.addEventListener('click', () => {
-	  const stream = video.captureStream();
-	  video.play();
-	  document.body.removeChild(startButton);
-	  resolve(stream);
-	});
+        startButton.addEventListener('click', () => {
+          const stream = (navigator.userAgent.indexOf('Firefox') > -1) ? video.mozCaptureStream() : video.captureStream();
+          video.play();
+          document.body.removeChild(startButton);
+          resolve(stream);
+        });
       };
       video.setAttribute('loop', '');
       video.setAttribute("src", path);
@@ -31,11 +31,11 @@ export const mockWithImage = (path) => {
 
       const image = new Image();
       image.onload = () => {
-	canvas.width = image.width;
-	canvas.height = image.height;
-	context.drawImage(image, 0, 0, image.width, image.height);
-	const stream = canvas.captureStream();
-	resolve(stream);
+        canvas.width = image.width;
+        canvas.height = image.height;
+        context.drawImage(image, 0, 0, image.width, image.height);
+        const stream = canvas.captureStream();
+        resolve(stream);
       }
       image.src = path;
     });
