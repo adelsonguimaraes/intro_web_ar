@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 17 - Renderizadores css</title>
+
+    <script type="module" src="./main.js"></script>
+    <script src="./../auxiliar/libs/mindar/mindar-image-three.prod.js"></script>
+
+    <style>
+        html,body {
+            position: relative;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #ar-div {
+            width: 1000px;
+            height: 1000px;
+            visibility: hidden;
+
+            background: #0000ff;
+            opacity: 0.6;
+            font-size: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="ar-div">
+        This is CSS div
+    </div>
+</body>
+</html>
