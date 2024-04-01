@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const start = async() => {
 
-        // mockWithImage('./assets/target.png')
+        mockWithImage('./assets/target.png')
         // mockWithImage('./assets/js.png')
 
         const mindarThree = new window.MINDAR.IMAGE.MindARThree({

@@ -95,4 +95,10 @@ export function createImageSlide(imageList) {
         setPositionByIndex();
     }
 
+    const leftOverlay = document.querySelector('.overlay.left');
+    const rightOverlay = document.querySelector('.overlay.right');
+
+    leftOverlay.addEventListener('click', prevSlide);
+    rightOverlay.addEventListener('click', nextSlide);
+
 }

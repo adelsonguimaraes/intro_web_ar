@@ -28,3 +28,20 @@ img {
   width: 100%;
   height: auto;
 }
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 20%;
+  background-color: rgba(140, 15, 224, 0.342); /* Azul com opacidade */
+  cursor: pointer;
+}
+
+.overlay.left {
+  left: 0;
+}
+
+.overlay.right {
+  right: 0;
+}
