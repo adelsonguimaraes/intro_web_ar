@@ -31,8 +31,8 @@ export const mockWithImage = (path) => {
 
       const image = new Image();
       image.onload = () => {
-        canvas.width = image.width;
-        canvas.height = image.height;
+        canvas.width = image.width*2;
+        canvas.height = image.height*2;
         context.drawImage(image, 0, 0, image.width, image.height);
         const stream = canvas.captureStream();
         resolve(stream);
