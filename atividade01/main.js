@@ -2,6 +2,7 @@ import * as THREE from './../auxiliar/libs/three.js-r132/build/three.module.js';
 import { mockWithImage, mockWithVideo } from '../auxiliar/libs/camera-mock.js';
 import { CSS3DObject } from '../auxiliar/libs/three.js-r132/examples/jsm/renderers/CSS3DRenderer.js';
 import { createImageSlide } from './slide.js';
+import { loadGLTF } from '../auxiliar/libs/loader.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const images = [
@@ -24,15 +25,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const mindarThree = new window.MINDAR.IMAGE.MindARThree({
             container: document.body,
-            imageTargetSrc: './assets/targets.mind'
+            imageTargetSrc: './assets/targets.mind',
+            maxTrack: 2,
         });
 
-        const { renderer, cssRenderer, cssScene, camera } = mindarThree
+        const { renderer, cssRenderer, scene, cssScene, camera } = mindarThree
+
+        const light = new THREE.HemisphereLight(0xffffff, 0xbbbbdd, 1);
+        scene.add(light);
 
         const obj = new CSS3DObject(document.querySelector('.slider-container'));
 
         const cssAnchor = mindarThree.addCSSAnchor(0);
         cssAnchor.group.add(obj);
+
+        const js = await loadGLTF('./assets/js_ar.glb');
+        js.scene.scale.set(0.1, 0.1, 0.1);
+        js.scene.position.set(0, -0.4, 0);
+
+        const jsAnchor = mindarThree.addAnchor(1);
+        jsAnchor.group.add(js.scene);
 
         await mindarThree.start();
 
