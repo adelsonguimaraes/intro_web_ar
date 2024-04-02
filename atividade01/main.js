@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const mindarThree = new window.MINDAR.IMAGE.MindARThree({
             container: document.body,
-            imageTargetSrc: './assets/targets.mind',
+            imageTargetSrc: './assets/targets_js.mind',
             maxTrack: 2,
         });
 
@@ -41,15 +41,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const js = await loadGLTF('./assets/js_ar.glb');
         js.scene.scale.set(0.1, 0.1, 0.1);
-        js.scene.position.set(0, -0.4, 0);
+        js.scene.position.set(0, 0, 0);
 
         const jsAnchor = mindarThree.addAnchor(1);
         jsAnchor.group.add(js.scene);
+
+        jsAnchor.onTargetFound = () => {
+            console.log('mostrando o 3D js model');
+        }
 
         await mindarThree.start();
 
         renderer.setAnimationLoop(() => {
             cssRenderer.render(cssScene, camera);
+            renderer.render(scene, camera);
         });
     }
 
