@@ -1,7 +1,8 @@
-export const mockWithVideo = (path) => {
+export const mockWithVideo = (path, volume = 0) => {
   navigator.mediaDevices.getUserMedia = () => {
     return new Promise((resolve, reject) => {
       const video = document.createElement("video");
+      video.volume = volume;
 
       video.oncanplay = () => {
         const startButton = document.createElement("button");
@@ -31,8 +32,8 @@ export const mockWithImage = (path) => {
 
       const image = new Image();
       image.onload = () => {
-        canvas.width = image.width*2;
-        canvas.height = image.height*2;
+        canvas.width = image.width;
+        canvas.height = image.height;
         context.drawImage(image, 0, 0, image.width, image.height);
         const stream = canvas.captureStream();
         resolve(stream);

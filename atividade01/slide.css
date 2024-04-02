@@ -1,14 +1,14 @@
 body, html {
+  position: absolute;
   margin: 0;
-  padding: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 
 .slider-container {
-  width: 100%;
-  height: 100%;
+  width: 1000px;
+  height: 1000px;
   overflow: hidden;
   position: relative;
   visibility: hidden;
@@ -22,6 +22,7 @@ body, html {
 
 .slide {
   flex: 0 0 100%;
+  align-self: center;
 }
 
 img {

@@ -1,5 +1,5 @@
 import * as THREE from './../auxiliar/libs/three.js-r132/build/three.module.js';
-import { mockWithImage } from '../auxiliar/libs/camera-mock.js';
+import { mockWithImage, mockWithVideo } from '../auxiliar/libs/camera-mock.js';
 import { CSS3DObject } from '../auxiliar/libs/three.js-r132/examples/jsm/renderers/CSS3DRenderer.js';
 import { createImageSlide } from './slide.js';
 
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const start = async() => {
 
-        // mockWithImage('./assets/target.png')
+        // mockWithVideo('./assets/video-cogumelo.mp4')
         // mockWithImage('./assets/js.png')
 
         const mindarThree = new window.MINDAR.IMAGE.MindARThree({
